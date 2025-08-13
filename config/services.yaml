@@ -3,13 +3,15 @@ services:
     autoconfigure: true
     autowire: true
 
-  Guave\FormSaveBundle\Controller\:
-    resource: ../src/Controller
+  Guave\FormSaveBundle\:
+    resource: ../src
+    exclude: ../src/{ContaoManager,DependencyInjection}
+
+  Guave\FormSaveBundle\EventListener\:
+    resource: ../src/EventListener
     public: true
 
-  Guave\FormSaveBundle\Config\Config:
-    public: true
-
-  Guave\FormSaveBundle\Migration\FormDataMigration:
+  Guave\FormSaveBundle\Migration\:
+    resource: ../src/Migration
     tags:
       - { name: contao.migration, priority: 0 }
